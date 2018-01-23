@@ -1,0 +1,32 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:df="nativescript-pro-ui/dataform"
+      navigatingTo="navigatingTo" class="page" actionBarHidden="true">
+    <StackLayout class="p-20" row="1">
+
+        <df:RadDataForm id="expenseEditForm" source="{{ expense }}" commitMode="Immediate"
+                        propertyCommit="onCommit"
+                        propertyCommitted="onCommitted"
+                        propertyValidate="onValidate"
+                        propertyValidated="onValidated">
+            <df:RadDataForm.properties>
+
+                <df:EntityProperty name="name" index="0"/>
+
+                <df:EntityProperty name="amount" converter="{{amountConverter}}"
+                                   displayName="{{currency, 'Amount (' + currency + ')' }}" index="1">
+                    <df:EntityProperty.editor>
+                        <df:PropertyEditor type="Number"/>
+                    </df:EntityProperty.editor>
+                </df:EntityProperty>
+
+                <df:EntityProperty name="tags" converter="{{tagsConverter}}" index="2"/>
+
+                <df:EntityProperty name="id" index="3"/>
+
+                <df:EntityProperty name="timestamp_utc" index="4"/>
+
+            </df:RadDataForm.properties>
+        </df:RadDataForm>
+
+    </StackLayout>
+
+</Page>
