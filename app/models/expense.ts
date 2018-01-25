@@ -11,7 +11,8 @@ export interface ExpenseConstructor {
 
 export interface IExpense {
     id: ExpenseIdType | null;
-    amount: ExpenseAmount;
+    amount: number;
+    currency:string;
     name: string;
     tags: string[];
     timestamp_utc: string;
@@ -21,7 +22,8 @@ export interface IExpense {
 export class Expense implements IExpense {
 
     public id: ExpenseIdType;
-    public amount: ExpenseAmount;
+    public amount: number;
+    public currency: string;
     public name: string;
     public tags: string[];
     public timestamp_utc: string;

@@ -1,30 +1,85 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:df="nativescript-pro-ui/dataform"
       navigatingTo="navigatingTo" class="page" actionBarHidden="true">
-    <StackLayout class="p-20" row="1">
 
-        <df:RadDataForm id="expenseEditForm" source="{{ expense }}" commitMode="Immediate"
+    <StackLayout class="p-20 form" row="1">
+
+        <df:RadDataForm id="expenseEditForm" source="{{ expense }}"
                         propertyCommit="onCommit"
                         propertyCommitted="onCommitted"
                         propertyValidate="onValidate"
-                        propertyValidated="onValidated">
-            <df:RadDataForm.properties>
+                        propertyValidated="onValidated"
+        >
+            <df:RadDataForm.groups>
+                <df:PropertyGroup collapsible="false" name=" " hidden="false">
 
-                <df:EntityProperty name="name" index="0"/>
+                    <df:PropertyGroup.layout>
+                        <df:DataFormStackLayout/>
+                    </df:PropertyGroup.layout>
+                    <df:PropertyGroup.properties>
 
-                <df:EntityProperty name="amount" converter="{{amountConverter}}"
-                                   displayName="{{currency, 'Amount (' + currency + ')' }}" index="1">
-                    <df:EntityProperty.editor>
-                        <df:PropertyEditor type="Number"/>
-                    </df:EntityProperty.editor>
-                </df:EntityProperty>
 
-                <df:EntityProperty name="tags" converter="{{tagsConverter}}" index="2"/>
+                        <df:EntityProperty name="name" index="0"/>
 
-                <df:EntityProperty name="id" index="3"/>
+                    </df:PropertyGroup.properties>
+                </df:PropertyGroup>
 
-                <df:EntityProperty name="timestamp_utc" index="4"/>
 
-            </df:RadDataForm.properties>
+                <df:PropertyGroup collapsible="false" name="  " hidden="false">
+
+                    <df:PropertyGroup.layout>
+                        <df:DataFormGridLayout/>
+                    </df:PropertyGroup.layout>
+
+                    <df:PropertyGroup.properties>
+
+                        <df:EntityProperty name="amount" index="1" columnIndex="0">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Number"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+
+                        <df:EntityProperty name="currency" index="1" columnIndex="1"
+                                           valuevaluesProvider="{{ currencies }}">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Picker"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+
+                        <df:EntityProperty name="time" index="2" columnIndex="0">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="TimePicker"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+
+                        <df:EntityProperty name="date" index="2" columnIndex="1">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="DatePicker"/>
+                            </df:EntityProperty.editor>
+
+                        </df:EntityProperty>
+                    </df:PropertyGroup.properties>
+                </df:PropertyGroup>
+
+                <df:PropertyGroup collapsible="false" name="   " hidden="false">
+                    <df:PropertyGroup.layout>
+                        <df:DataFormGridLayout/>
+                    </df:PropertyGroup.layout>
+                    <df:PropertyGroup.properties>
+
+                        <df:EntityProperty name="tags" converter="{{tagsConverter}}" index="3">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Text"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+
+                        <df:EntityProperty name="id" index="4" hidden="true"/>
+                        <df:EntityProperty name="timestamp_utc" index="5" hidden="true"/>
+
+                    </df:PropertyGroup.properties>
+                </df:PropertyGroup>
+            </df:RadDataForm.groups>
+
+
         </df:RadDataForm>
 
     </StackLayout>

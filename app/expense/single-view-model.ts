@@ -67,12 +67,21 @@ export class AmountConverter implements PropertyConverter {
 }
 
 export class TagsConverter implements PropertyConverter {
-    convertFrom(source: string[]): any {
+    convertFrom(source: any): any {
+        console.log("convertFrom")
+        console.log(source);
         return source.join(", ")
     }
 
     convertTo(source: string): any {
-        return source.split(",").map(value => value.trim());
+        console.log("convertTo");
+        console.log(source);
+        let result = source.split(",").map(value => value.trim());
+
+        console.log(result);
+        console.log(typeof result);
+
+        return result;
     }
 }
 

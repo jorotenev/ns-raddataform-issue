@@ -7,13 +7,13 @@ let page: Page;
 let dataform;
 let expense = {
     id:1,
-    amount:{
-        raw_amount:11,
-        currency:"EUR"
-    },
+    amount:11,
+    currency:"EUR",
     name:"opa",
-    timestamp_utc:"time",
-    tags:[]
+    date:"2018-01-23",
+    time:"19:22",
+    timestamp_utc:null,
+    tags: ['work', 'home']
 };
 export function navigatingTo(args: EventData) {
     page = <Page>args.object;
